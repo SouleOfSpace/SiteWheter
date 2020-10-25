@@ -1,0 +1,62 @@
+<!--DOCTYPE html-->
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edje">
+    <title>Weather in World</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <h5 class="my-0 mr-md-auto font-weight-normal">Weather in the Word</h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="#">Главная</a>
+        <a class="p-2 text-dark" href="#">Информация</a>
+      </nav>
+      <a class="btn btn-outline-primary" href="http://127.0.0.1:8000/admin">Admin</a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-5 offset-1">
+                <h1>Погодное приложение</h1>
+                <form action="" method="post">
+                    {%csrf_token%}
+                    <label for="city">Город</label>
+                    <div class="input-group-sm mb-3">
+                    {{form.name}}
+                    </div>
+                    <input type="submit" name="send" value="Узнать" class="btn mt-btn btn-danger">
+                </form>
+            </div>
+            <div class="col-5 offset-1">
+                <h1>Информация</h1>
+                {% for info in all_info %}
+                <div div class="alert alert-primary" role="alert">
+                    <div class="row">
+                        <div class="col-9">
+                            <b>Город:</b> {{info.city}}<br>
+                            <b>Температура:</b> {{info.temp}}<sup>o</sup>
+                        </div>
+                        <div class="col-3">
+                            <img src="http://openweathermap.org/img/w/{{info.icon}}.png" alt="Изображение не распознано" class="rounded mx-auto d-block" width="40">
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вернуться к началу</font></font></a>
+    </p>
+    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Пример альбома - © Bootstrap, но, пожалуйста, скачайте и настройте его для себя!</font></font></p>
+    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Новое в Bootstrap? </font></font><a href="https://getbootstrap.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Посетите домашнюю страницу</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> или прочитайте наше </font></font><a href="/docs/4.3/getting-started/introduction/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">руководство по началу работы</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+  </div>
+</footer>
+</body>
+</html>
